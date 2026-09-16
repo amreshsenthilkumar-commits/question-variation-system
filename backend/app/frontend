@@ -1,1 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assessment & Reliability System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden { display: none; }
+        .spinner {
+            border: 4px solid rgba(0,0,0,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #3b82f6;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+    <nav class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">AI Assessment System</h1>
+            <div class="space-x-4">
+                <button onclick="switchTab('ps8')" class="font-semibold hover:text-blue-200">PS8 Variation Generator</button>
+                <button onclick="switchTab('ps2')" class="font-semibold hover:text-blue-200">PS2 Reliability Verifier</button>
+            </div>
+        </div>
+    </nav>
+    <main class="container mx-auto mt-8 p-4">
+        <!-- PS8: Question Variation -->
+        <section id="ps8-section">
+            <div class="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto">
+                <h2 class="text-2xl font-bold mb-4">Question Variation Generator</h2>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Seed Question</label>
+                    <textarea id="ps8-question" class="w-full border p-2 rounded focus:ring focus:ring-blue-200" rows="3" placeholder="Enter your question here..."></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Number of Variations</label>
+                    <input type="number" id="ps8-num" class="w-full border p-2 rounded focus:ring focus:ring-blue-200" value="3" min="1" max="20">
+                </div>
+                <button onclick="generateVariations()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Generate Variations</button>
+                
+                <div id="ps8-loading" class="hidden flex justify-center my-4"><div class="spinner"></div></div>
+                <div id="ps8-error" class="hidden text-red-500 mt-4"></div>
+                
+                <div id="ps8-results" class="hidden mt-6 border-t pt-4">
+                    <h3 class="text-lg font-bold mb-2">Results:</h3>
+                    <ul id="ps8-list" class="list-disc pl-5 space-y-2 text-gray-700"></ul>
 
